@@ -4,90 +4,160 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Checkpoint 1</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"> <!-- Google Fonts Roboto -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"> <!-- Google Fonts Poppins -->
 <style>
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #171717;
   margin: 0;
   padding: 0;
   color: #ffffff;
 }
 
-.container {
+.fullscreen {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #222222;
-  padding: 60px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-screen {
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-animation {
+  width: 120px; /* Increased width */
+  height: 120px; /* Increased height */
+}
+
+.fadeInText {
+  animation: fadeInText 1s ease 1s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 h1 {
-  margin-bottom: 20px;
-  font-size: 28px;
+  margin-bottom: 10px;
+  font-size: 36px;
+  font-family: 'Poppins', sans-serif;
+  color: #ff7878;
+  text-align: center;
 }
 
 p {
-  font-size: 24px;
+  font-size: 18px;
   margin-bottom: 20px;
-}
-
-button {
-  padding: 15px 30px;
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
-  margin: 10px;
-  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  text-align: center;
 }
 
 .subscribeBtn {
-  background-color: #ff5733;
+  background-color: #e74c3c;
   color: white;
+  padding: 15px 30px;
+  border-radius: 20px;
+  margin: 10px;
+  font-size: 20px;
+  transition: all 0.3s ease;
 }
 
-.lootlinkBtn {
-  background-image: linear-gradient(45deg, #fff, #ffff00);
-  color: #222;
+.subscribeBtn:hover {
+  transform: scale(1.05);
 }
 
-.linkversiteBtn {
-  background-image: linear-gradient(45deg, #ffa500, #fff);
-  color: #222;
+.lootlinkBtn, .linkversiteBtn {
+  font-family: 'Poppins', sans-serif;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  margin: 10px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.lootlinkBtn:hover, .linkversiteBtn:hover {
+  transform: scale(1.05);
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #999;
+  text-align: center;
+}
+
+.lootlinkBtn h2, .linkversiteBtn h2 {
+  font-size: 24px;
+  font-family: 'Poppins', sans-serif;
+  color: #ff7878;
 }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>Complete the tasks to continue</h1>
-  <p>Subscribe to my YouTube channel:</p>
-  <button class="subscribeBtn" onclick="window.open('https://www.youtube.com/@iamiakk', '_blank')">Subscribe</button>
+<div class="loading-screen">
+  <h1>Loading</h1>
+  <img src="https://i.pinimg.com/originals/85/e2/4b/85e24bd18e3658cd321688b4c34cc576.gif" alt="loading animation" class="loading-animation">
+</div>
+
+<div class="fullscreen" style="display: none;">
+  <div class="container">
+    <h1 class="fadeInText">Complete the tasks to continue</h1>
+    <p class="fadeInText">Subscribe to my YouTube channel:</p>
+    <button class="subscribeBtn" onclick="window.open('https://www.youtube.com/@iamiakk', '_blank')">Subscribe Now</button>
+  </div>
 </div>
 
 <script>
 setTimeout(function() {
-  document.querySelector('.container').style.display = 'none';
+  document.querySelector('.loading-screen').style.display = 'none';
+  document.querySelector('.fullscreen').style.display = 'flex';
+  document.querySelector('.fullscreen').classList.add('fadeInText'); // Fade in the fullscreen content
+}, 5000); // Changed the delay to 5 seconds
+</script>
+
+<script>
+setTimeout(function() {
+  document.querySelector('.fullscreen').style.display = 'none';
   document.body.innerHTML += `
-    <div class="container">
-      <h1>VELVET X Key system (1/1)</h1>
-      <p>Make your choice:</p>
-      <button class="lootlinkBtn" id="lootlinkBtn">Lootlink</button>
-      <button class="linkversiteBtn" id="linkversiteBtn">Linkversite</button>
+    <div class="fullscreen">
+      <h1 class="fadeInText">VELVET X Key system (1/1)</h1>
+      <button class="linkversiteBtn" style="width: 300px; background-color: #ffa500;" onclick="window.open('https://link-center.net/1034813/velvet-x-key-system', '_blank')">
+        <h2 style="color: white;">LINK VERTISE</h2>
+        <button style="background-color: #fff; padding: 10px 20px; border-radius: 20px; color: #ff7878;">Go to Linkvertise</button>
+      </button>
+      <button class="lootlinkBtn" style="width: 300px; background-color: #ffd700;" onclick="window.open('https://loot-link.com/s?pofP', '_blank')">
+        <h2 style="color: white;">LOOTLINK</h2>
+        <button style="background-color: #800080; padding: 10px 20px; border-radius: 20px; color: #fff;">Go to Lootlink</button>
+      </button>
     </div>
   `;
-  
-  document.getElementById('lootlinkBtn').addEventListener('click', function() {
-    window.open('https://loot-link.com/s?pofP', '_blank');
-  });
-  
-  document.getElementById('linkversiteBtn').addEventListener('click', function() {
-    window.open('https://link-center.net/1034813/velvet-x-key-system', '_blank');
-  });
 }, 10000);
 </script>
 </body>
 </html>
-
